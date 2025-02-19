@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.pruebas_fisicas.ui.login.ui.LoginScreen
 import com.example.pruebas_fisicas.ui.theme.Pruebas_FisicasTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,9 +21,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             Pruebas_FisicasTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
+                    LoginScreen(Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
+
