@@ -25,4 +25,7 @@ class LoginViewModel : ViewModel() {
         Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
     private fun isValidPassword(password: String): Boolean = password.length > 6
+    fun onLoginSelected() {
+        TODO("Not yet implemented")
+    }
 }

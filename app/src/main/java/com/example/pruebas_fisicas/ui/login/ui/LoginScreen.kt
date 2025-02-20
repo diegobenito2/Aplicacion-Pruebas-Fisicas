@@ -41,6 +41,7 @@ fun LoginScreen(modifier: Modifier,viewModel: LoginViewModel) {
 fun Login(modifier: Modifier, viewModel: LoginViewModel) {
     val email:String by viewModel.email.observeAsState("")
     val password:String by viewModel.password.observeAsState("")
+    val loginEnable:Boolean by viewModel.loginEnable.observeAsState(initial = false)
     Column(modifier) {
         HeaderImage(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(16.dp))
@@ -50,14 +51,14 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel) {
         Spacer(modifier = Modifier.padding(8.dp))
         ForgotPassword(Modifier.align(Alignment.End))
         Spacer(modifier = Modifier.padding(16.dp))
-        LoginButton()
+        LoginButton(loginEnable){viewModel.onLoginSelected()}
     }
 }
 
 @Composable
-fun LoginButton() {
+fun LoginButton(loginEnable: Boolean, onLoginSelected: () -> Unit) {
     Button(
-        onClick = { /* Acción aquí */ },
+        onClick = {onLoginSelected},
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
@@ -66,7 +67,7 @@ fun LoginButton() {
             contentColor = Color.White, // Color del texto/iconos
             disabledContainerColor = Color(0xFFBDBDBD), // Color de fondo cuando está deshabilitado
             disabledContentColor = Color(0xFF757575) // Color del texto cuando está deshabilitado
-        )
+        ), enabled = loginEnable
     ) {
         Text("Iniciar Sesión")
     }
