@@ -4,6 +4,7 @@ import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.pruebas_fisicas.ui.login.data.User
 
 class LoginViewModel : ViewModel() {
 
@@ -26,6 +27,7 @@ class LoginViewModel : ViewModel() {
 
     private fun isValidPassword(password: String): Boolean = password.length > 6
     fun onLoginSelected() {
-        TODO("Not yet implemented")
+        User(email = email.toString(), password = password.toString())
+
     }
 }
