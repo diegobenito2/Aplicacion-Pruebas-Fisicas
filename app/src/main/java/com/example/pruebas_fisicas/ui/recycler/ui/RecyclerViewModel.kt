@@ -1,5 +1,0 @@
-package com.example.pruebas_fisicas.ui.recycler.ui
-
-class RecyclerViewModel {
-
-}
