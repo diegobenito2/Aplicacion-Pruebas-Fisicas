@@ -8,8 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import com.example.pruebas_fisicas.BBDD.BBdd
 import com.example.pruebas_fisicas.ui.login.data.User
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.listSaver
+
 
 class HelperUser(context: Context) : BBdd(context = context) {
+
+
 
     @Composable
     fun getUser(email: String): User? {
@@ -24,7 +29,7 @@ class HelperUser(context: Context) : BBdd(context = context) {
     }
 
     @Composable
-    fun insertUser(user: User) {
+    fun InsertUser(user: User) {
         if (user.email == "" || user.password == "") return
         val db: SQLiteDatabase = writableDatabase
         db.beginTransaction()
@@ -41,7 +46,7 @@ class HelperUser(context: Context) : BBdd(context = context) {
     }
 
     @Composable
-    fun updateUser(email: String, newPasword: String) {
+    fun UdateUser(email: String, newPasword: String) {
         val user = getUser(email)
         if (user != null) {
             user.password = newPasword
@@ -61,5 +66,15 @@ class HelperUser(context: Context) : BBdd(context = context) {
             Toast.makeText(LocalContext.current, "El usuario no existe", Toast.LENGTH_SHORT).show()
         }
     }
+
+    fun userExists(email: String): Boolean {
+        val db: SQLiteDatabase = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM user WHERE email = '$email'", null)
+        val exists = cursor.count > 0
+        cursor.close()
+        return exists
+
+    }
+
 
 }
