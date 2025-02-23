@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.pruebas_fisicas.ThemeSwitcherApp
 import kotlinx.coroutines.launch
 
 @Composable
@@ -31,33 +32,35 @@ fun ForgotScreen(navController: NavController, email: String) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            ForgotPassword(navController,email)
+            ForgotPassword(navController, email)
         }
     }
 }
 
 @Composable
-fun ForgotPassword(navController: NavController,email: String) {
+fun ForgotPassword(navController: NavController, email: String) {
     val helperUser = helperUser()
     var password by rememberSaveable { mutableStateOf("") }
     var isLoading by rememberSaveable { mutableStateOf(false) }
     val loginEnable = isValidPassword(password)
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
-    Column {
-        HeaderText("Iniciar Sesión", Modifier.align(Alignment.CenterHorizontally))
-        Spacer(modifier = Modifier.padding(16.dp))
-        PasswordField("Introduce la nueva contraseña", password) { password = it }
-        Spacer(modifier = Modifier.padding(8.dp))
-        buttons("Iniciar Sesión", loginEnable) {
-            coroutineScope.launch {
-                isLoading = true
+    Box(modifier = Modifier.fillMaxSize()) {
+        ThemeSwitcherApp()
+        Column {
+            HeaderText("Iniciar Sesión", Modifier.align(Alignment.CenterHorizontally))
+            Spacer(modifier = Modifier.padding(16.dp))
+            PasswordField("Introduce la nueva contraseña", password) { password = it }
+            Spacer(modifier = Modifier.padding(8.dp))
+            buttons("Iniciar Sesión", loginEnable) {
+                coroutineScope.launch {
+                    isLoading = true
 //                helperUser.UdateUser(email, password)
-                Toast.makeText(context, "¡¡Contraseña cambiada con éxito!!", Toast.LENGTH_SHORT)
-                    .show()
+                    Toast.makeText(context, "¡¡Contraseña cambiada con éxito!!", Toast.LENGTH_SHORT)
+                        .show()
 
+                }
             }
         }
     }
-
 }

@@ -18,6 +18,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -43,6 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pruebas_fisicas.BBDD.helpers.HelperUser
 import com.example.pruebas_fisicas.R
+import com.example.pruebas_fisicas.ThemeSwitcherApp
 import com.example.pruebas_fisicas.ui.login.data.User
 import com.example.pruebas_fisicas.ui.navigation.ForgotPass
 import com.example.pruebas_fisicas.ui.navigation.InfoS
@@ -51,16 +53,20 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
-    val modifier: Modifier = Modifier
-        .fillMaxSize()
-        .padding(16.dp)
-    Box(modifier) {
-        Column(
-            modifier.align(Alignment.Center),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Login(navController)
+    Scaffold { innerpadding ->
+        val modifier: Modifier = Modifier
+            .fillMaxSize()
+            .padding(innerpadding)
+
+        Box(modifier) {
+            ThemeSwitcherApp()
+            Column(
+                modifier.align(Alignment.Center),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Login(navController)
+            }
         }
     }
 }
@@ -96,6 +102,7 @@ fun Login(navController: NavHostController) {
                 navController.navigate(InfoS)
             }
         }
+        Spacer(modifier = Modifier.padding(120.dp))
     }
 
 }
@@ -129,7 +136,7 @@ fun buttons(
 @Composable
 fun ForgotPasswordmethod(modifier: Modifier, navController: NavHostController, email: String) {
     val helperUser = helperUser()
-    val snackbarHostState = remember{ SnackbarHostState() }
+    val snackbarHostState = remember { SnackbarHostState() }
     val user: User? = helperUser.getUser(email)
     if (user == null) {
         val coroutineScope = rememberCoroutineScope()
@@ -138,11 +145,11 @@ fun ForgotPasswordmethod(modifier: Modifier, navController: NavHostController, e
         }
         return
     }
-    val email:String = email
+
     Text(
         "Olvidaste la contraseña?",
         modifier.clickable {
-            navController.navigate(ForgotPass(email))
+//            navController.navigate(ForgotPass(email))
         },
         fontSize = 12.sp,
         fontWeight = FontWeight.Bold

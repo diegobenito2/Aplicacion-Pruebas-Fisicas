@@ -35,12 +35,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pruebas_fisicas.R
+import com.example.pruebas_fisicas.ThemeSwitcherApp
 
 @Composable
 fun InfoScreen(navController: NavHostController) {
     Box(
         Modifier.fillMaxSize()
     ) {
+        ThemeSwitcherApp()
 //        Icon(
 //            painter = painterResource(R.drawable.atras),
 //            "Atras",
