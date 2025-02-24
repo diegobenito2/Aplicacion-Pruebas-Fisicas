@@ -9,7 +9,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f2c45b-76e5-4235-9ad0-d3ff08761fba" name="Changes" comment="Cambio al modo oscuro" />
+    <list default="true" id="c1f2c45b-76e5-4235-9ad0-d3ff08761fba" name="Changes" comment="Cambio al modo oscuro">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/DatosUsuario.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/BBdd.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/BBdd.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperUser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperUser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperUsuario.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperdatosUsuario.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/InfoScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/InfoScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/List.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/List.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/RecyclerScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/RecyclerScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/theme/Theme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/theme/Theme.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +42,7 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>

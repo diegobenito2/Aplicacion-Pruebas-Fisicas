@@ -1,6 +1,7 @@
 package com.example.pruebas_fisicas.ui.login.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Patterns
 import android.widget.Toast
 import androidx.compose.foundation.clickable
@@ -44,8 +45,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pruebas_fisicas.BBDD.helpers.HelperUser
 import com.example.pruebas_fisicas.R
-import com.example.pruebas_fisicas.ThemeSwitcherApp
 import com.example.pruebas_fisicas.ui.login.data.User
+import com.example.pruebas_fisicas.ui.login.data.UserconID
 import com.example.pruebas_fisicas.ui.navigation.ForgotPass
 import com.example.pruebas_fisicas.ui.navigation.InfoS
 import kotlinx.coroutines.launch
@@ -59,7 +60,7 @@ fun LoginScreen(navController: NavHostController) {
             .padding(innerpadding)
 
         Box(modifier) {
-            ThemeSwitcherApp()
+
             Column(
                 modifier.align(Alignment.Center),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -71,14 +72,15 @@ fun LoginScreen(navController: NavHostController) {
     }
 }
 
+
 @Composable
 fun Login(navController: NavHostController) {
-    val helperUser = helperUser()
+    val context = LocalContext.current
+    val helperUser = HelperUser(context)
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var isLoading by rememberSaveable { mutableStateOf(false) }
     val loginEnable = isValidEmail(email) && isValidPassword(password)
-    val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
 
     Column {
@@ -90,17 +92,30 @@ fun Login(navController: NavHostController) {
         Spacer(modifier = Modifier.padding(8.dp))
         ForgotPasswordmethod(Modifier.align(Alignment.End), navController, email)
         Spacer(modifier = Modifier.padding(16.dp))
-        val user = User(0, email, password)
+        val user = User(email, password)
         buttons("Iniciar Sesión", loginEnable) {
             coroutineScope.launch {
                 isLoading = true
-                if (!helperUser.userExists(email)) {
-//                    helperUser.InsertUser(user)
+                val userconId = helperUser.getUser(email.trim())
+                if (userconId != null) {
+                    if (user.email == userconId.email && user.password == userconId.password) {
+                        navController.navigate(InfoS(userconId.id))
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "La contraseña es incorrecta. Inténtalo de nuevo.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } else {
+                    Toast.makeText(
+                        context,
+                        "El usuario no existe.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                Toast.makeText(context, "¡¡Sesión iniciada con éxito!!", Toast.LENGTH_SHORT)
-                    .show()
-                navController.navigate(InfoS)
             }
+
         }
         Spacer(modifier = Modifier.padding(120.dp))
     }
@@ -135,9 +150,11 @@ fun buttons(
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun ForgotPasswordmethod(modifier: Modifier, navController: NavHostController, email: String) {
-    val helperUser = helperUser()
+    val context = LocalContext.current
+    val helperUser = HelperUser(context)
+
     val snackbarHostState = remember { SnackbarHostState() }
-    val user: User? = helperUser.getUser(email)
+    val user: UserconID? = helperUser.getUser(email)
     if (user == null) {
         val coroutineScope = rememberCoroutineScope()
         coroutineScope.launch {
@@ -149,7 +166,7 @@ fun ForgotPasswordmethod(modifier: Modifier, navController: NavHostController, e
     Text(
         "Olvidaste la contraseña?",
         modifier.clickable {
-//            navController.navigate(ForgotPass(email))
+            navController.navigate(ForgotPass(user.email))
         },
         fontSize = 12.sp,
         fontWeight = FontWeight.Bold
@@ -225,18 +242,17 @@ fun HeaderText(text: String, modifier: Modifier) {
         text,
         modifier,
         fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        color = Color.Black
+        fontWeight = FontWeight.Bold
     )
 }
 
 fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
-fun isValidPassword(password: String): Boolean = password.length > 6
+fun isValidPassword(password: String): Boolean = password.length > 6 && password.length < 255
 
-@Composable
-fun helperUser(): HelperUser {
-    val context = LocalContext.current
-    return remember { HelperUser(context) }
+
+fun helperUser(context: Context): HelperUser {
+    return HelperUser(context)
 }
+
 

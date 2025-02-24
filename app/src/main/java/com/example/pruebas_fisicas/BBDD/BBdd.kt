@@ -6,26 +6,34 @@ import android.database.sqlite.SQLiteOpenHelper
 
 open class BBdd(context: Context) : SQLiteOpenHelper(context, "PruebasFisicas", null, 1) {
     private val createTableUser =
-        "CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT, email VARCHAR(50), password VARCHAR(13))"
+        "CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT, email VARCHAR(255), password VARCHAR(255))"
     private val borrarTableUser = "DROP TABLE IF EXISTS user"
 
-    private val createTableUsuario =
-        "CREATE TABLE usuario(" +
+    private val createTableDatosUsuario =
+        "CREATE TABLE datosUsuario(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nombre VARCHAR(50), " +
-                "userId INTEGER, " +
-                "FOREIGN KEY(userId) REFERENCES user(id)" +
+                "edad INTEGER, " +
+                "peso FLOAT, " +
+                "altura FLOAT, " +
+                "sexo VARCHAR(10) CHECK(sexo IN ('Hombre', 'Mujer')), " +
+                "email VARCHAR(255), " +
+                "FOREIGN KEY(email) REFERENCES user(email)" +
                 ")"
-    private val borrarTableUsuario = "DROP TABLE IF EXISTS usuario"
+    private val borrarTableDatosUsuario = "DROP TABLE IF EXISTS datosUsuario"
+    private val createTableNotaUsuarios =
+        "CREATE TABLE notasUsuarios(id INTEGER PRIMARY KEY AUTOINCREMENT,nombrePrueba VARCHAR(255),nota FLOAT,email VARCHAR(255),FOREIGN KEY(email) REFERENCES user(email))"
+    private val borrarTableNotaUsuarios = "DROP TABLE IF EXISTS notasUsuarios"
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(createTableUser)
-        db?.execSQL(createTableUsuario)
+        db?.execSQL(createTableDatosUsuario)
+        db?.execSQL(createTableNotaUsuarios)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL(borrarTableUser)
-        db?.execSQL(borrarTableUsuario)
+        db?.execSQL(borrarTableDatosUsuario)
+        db?.execSQL(borrarTableNotaUsuarios)
         onCreate(db)
     }
 }

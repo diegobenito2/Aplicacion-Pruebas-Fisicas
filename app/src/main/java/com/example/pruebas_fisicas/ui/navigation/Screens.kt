@@ -7,6 +7,6 @@ object Login
 @Serializable
 data class ForgotPass(val email: String)
 @Serializable
-object InfoS
+data class InfoS(val email: Int)
 @Serializable
 object Recycler
