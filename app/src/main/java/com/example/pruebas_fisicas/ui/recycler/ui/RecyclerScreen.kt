@@ -2,85 +2,151 @@ package com.example.pruebas_fisicas.ui.recycler.ui
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.AdapterView.OnItemSelectedListener
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pruebas_fisicas.ui.recycler.data.Prueba
 import com.example.pruebas_fisicas.ui.recycler.data.listPruebas
 
-@OptIn(ExperimentalFoundationApi::class)
+
 @Composable
 fun RecyclerScreen(navController: NavHostController) {
-    val rvState = rememberLazyListState()
-    val pruebasList = listPruebas().groupBy { it.type }
 
-    Scaffold { innerpadding ->
-        val modifier: Modifier = Modifier
-            .fillMaxSize()
-            .padding(innerpadding)
-        Column {
-            LazyColumn(
-                state = rvState,
-                modifier = modifier
-                    .align(Alignment.CenterHorizontally)
-            ) {
-                pruebasList.forEach { (type, prueba) ->
-                    stickyHeader {
+    val pruebasList = listPruebas(edad = 14)
+    val pruebasListGrouped = pruebasList.groupBy { it.type } // Agrupamos por categorías
+    val categories = pruebasListGrouped.keys.toList()
 
-                        Text(
-                            text = type,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            fontSize = 20.sp,
-                            color = Color.Black
+    // Estado de búsqueda
+    var searchQuery by remember { mutableStateOf("") }
+    var selectedCategory by remember { mutableStateOf<String?>(null) }
+
+    // Filtrar las pruebas según el nombre y la categoría seleccionada
+    val filteredPruebas = pruebasList.filter {
+        (it.Nombre.contains(
+            searchQuery,
+            ignoreCase = true
+        )) && (selectedCategory == null || it.type == selectedCategory)
+    }
+
+    Column {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Icon(
+                imageVector = (Icons.Default.ArrowBack),
+                "Atrás",
+                modifier = Modifier
+                    .size(45.dp)
+                    .padding(start = 20.dp)
+                    .clickable { navController.popBackStack() }
+            )
+            // Campo de búsqueda
+            TextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                label = { Text("Buscar por nombre de prueba") },
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(start = 20.dp) // El campo de búsqueda ocupará el espacio restante
+            )
+
+            // Menú de categorías
+            var expanded by remember { mutableStateOf(false) }
+
+            Box {
+                IconButton(
+                    onClick = { expanded = !expanded }
+                ) {
+                    Icon(Icons.Default.MoreVert, contentDescription = "Menú de categorías")
+                }
+
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false },
+                    modifier = Modifier.width(200.dp)
+                ) {
+                    categories.forEach { category ->
+                        DropdownMenuItem(
+                            text = { Text(text = category) },
+                            onClick = {
+                                selectedCategory = category
+                                expanded = false
+                            }
                         )
                     }
-                    items(prueba) { pruebaItem ->
-                        itemPrueba(prueba = pruebaItem)
-                    }
+                    DropdownMenuItem(
+                        text = { Text("Mostrar todas") },
+                        onClick = {
+                            selectedCategory = null
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+
+        // Mostrar la lista filtrada de pruebas
+        LazyColumn(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+            items(filteredPruebas) { pruebaItem ->
+                itemPrueba(prueba = pruebaItem) {
+                    navController.navigate("prueba/${pruebaItem.Nombre}")
                 }
             }
         }
     }
+
 }
 
 @Composable
-fun itemPrueba(prueba: Prueba) {
+fun itemPrueba(prueba: Prueba, onItemSelected: (Prueba) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(16.dp)
+            .clickable { OnItemClickListener(prueba) },
         elevation = CardDefaults.cardElevation(8.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White,
-            contentColor = Color.Black
-        ),
         border = BorderStroke(1.dp, Color.Gray)
     ) {
         Column {
@@ -103,7 +169,7 @@ fun itemPrueba(prueba: Prueba) {
                     fontSize = 18.sp,
                     color = Color.Black,
                     maxLines = 1,
-                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis
                 )
                 Text(
                     text = "Descripción",
@@ -116,17 +182,13 @@ fun itemPrueba(prueba: Prueba) {
                         }
                         .padding(top = 8.dp),
                     textAlign = TextAlign.Start,
-                    fontSize = 14.sp,
-                    color = Color.Blue
-                )
-                Text(
-                    text = prueba.type,
-                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-                    textAlign = TextAlign.Start,
-                    fontSize = 12.sp,
-                    color = Color.Gray
+                    fontSize = 14.sp
                 )
             }
         }
     }
+}
+
+fun OnItemClickListener(prueba: Prueba) {
+
 }
