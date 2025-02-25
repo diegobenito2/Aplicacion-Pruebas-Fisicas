@@ -26,6 +26,7 @@ class HelperdatosUsuario(context: Context) : BBdd(context) {
         return db.insert("datosUsuario", null, values)
     }
 
+
     // Obtener datos de usuario por ID
     fun getDatosUsuarioPorId(userId: Int): DatosUsuario? {
         val db = this.readableDatabase
@@ -35,6 +36,7 @@ class HelperdatosUsuario(context: Context) : BBdd(context) {
         )
 
         var datosUsuario: DatosUsuario? = null
+
         if (cursor.moveToFirst()) {
             val edad = cursor.getInt(cursor.getColumnIndexOrThrow("edad"))
             val peso = cursor.getFloat(cursor.getColumnIndexOrThrow("peso"))
