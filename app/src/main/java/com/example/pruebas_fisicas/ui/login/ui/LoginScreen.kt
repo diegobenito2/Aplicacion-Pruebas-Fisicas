@@ -99,6 +99,7 @@ fun Login(navController: NavHostController) {
                 val userconId = helperUser.getUser(email.trim())
                 if (userconId != null) {
                     if (user.email == userconId.email && user.password == userconId.password) {
+                        println("User ID: ${userconId.id}")
                         navController.navigate(InfoS(userconId.id))
                     } else {
                         Toast.makeText(
@@ -251,8 +252,5 @@ fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email)
 fun isValidPassword(password: String): Boolean = password.length > 6 && password.length < 255
 
 
-fun helperUser(context: Context): HelperUser {
-    return HelperUser(context)
-}
 
 
