@@ -16,8 +16,8 @@ open class BBdd(context: Context) : SQLiteOpenHelper(context, "PruebasFisicas", 
                 "peso FLOAT, " +
                 "altura FLOAT, " +
                 "sexo VARCHAR(10) CHECK(sexo IN ('Hombre', 'Mujer')), " +
-                "email VARCHAR(255), " +
-                "FOREIGN KEY(email) REFERENCES user(email)" +
+                "userId INTEGER, " +
+                "FOREIGN KEY(userId) REFERENCES user(id)" +
                 ")"
     private val borrarTableDatosUsuario = "DROP TABLE IF EXISTS datosUsuario"
     private val createTableNotaUsuarios =

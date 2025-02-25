@@ -166,6 +166,7 @@ fun itemPrueba(prueba: Prueba, onItemSelected: (Prueba) -> Unit) {
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Start,
                     fontSize = 18.sp,
+                    color = Color.Black,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )

@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.pruebas_fisicas.BBDD.BBdd
 import com.example.pruebas_fisicas.ui.navigation.NavegationWrapper
-import com.example.pruebas_fisicas.ui.recycler.ui.RecyclerScreen
 import com.example.pruebas_fisicas.ui.theme.Pruebas_FisicasTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,8 +34,8 @@ fun ThemeSwitcherApp() {
     val navController = rememberNavController()
     val bBdd = BBdd(LocalContext.current)
     val db= bBdd.writableDatabase
-//    bBdd.onUpgrade(db, 1, 2) //Para borrar la base datos y volver a crearla
-//    cargarDatos(db) // cargar los usuarios a la base de datos.
+    bBdd.onUpgrade(db, 1, 2) //Para borrar la base datos y volver a crearla
+    cargarDatos(db) // cargar los usuarios a la base de datos.
     Pruebas_FisicasTheme(darkTheme = isDarkTheme) {
         Scaffold(
             floatingActionButton = {

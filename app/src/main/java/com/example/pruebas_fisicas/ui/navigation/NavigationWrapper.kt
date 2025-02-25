@@ -15,17 +15,21 @@ fun NavegationWrapper(navController: NavHostController) {
         composable<Login> {
             LoginScreen(navController)
         }
-        composable<ForgotPass> { backStackEntry ->
-            val email = backStackEntry.arguments?.getString("email") ?: ""
+        composable<ForgotPass> {
+            val email = it.arguments?.getString("email") ?: ""
             ForgotScreen(navController, email)
         }
-        composable<InfoS> { backStackEntry ->
-            val userId = backStackEntry.arguments?.getInt("userId") ?: -1
+        composable<InfoS> {
+            val userId = it.arguments?.getString("userId")?.toIntOrNull() ?: -1
+            println("userId: $userId")
             InfoScreen(navController, userId)
         }
         composable<Recycler> {
-            RecyclerScreen(navController)
+            val userId = it.arguments?.getString("userId")?.toIntOrNull() ?: -1
+            RecyclerScreen(navController,userId)
         }
+
+
     }
 }
 

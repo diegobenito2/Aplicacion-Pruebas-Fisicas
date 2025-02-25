@@ -9,19 +9,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f2c45b-76e5-4235-9ad0-d3ff08761fba" name="Changes" comment="Cambio al modo oscuro">
+    <list default="true" id="c1f2c45b-76e5-4235-9ad0-d3ff08761fba" name="Changes" comment="LoginScreen terminado">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperdatosUsuario.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/DatosUsuario.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/BBdd.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/BBdd.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperUser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperUser.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperUsuario.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperdatosUsuario.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperUsuario.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperNotasUsuarios.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/InfoScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/InfoScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/List.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/List.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/NavigationWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/NavigationWrapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/Screens.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/Screens.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/RecyclerScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/RecyclerScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/theme/Theme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/theme/Theme.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +38,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin File" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -196,12 +194,66 @@
       <option name="project" value="LOCAL" />
       <updated>1740339702989</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Imagenes que no me servian">
+      <option name="closed" value="true" />
+      <created>1740428238181</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740428238181</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Imagenes que me sirven">
+      <option name="closed" value="true" />
+      <created>1740428253620</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740428253620</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Cambio en las listas de los recycler por no mirar los baremos">
+      <option name="closed" value="true" />
+      <created>1740428296001</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1740428296001</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Cambios para que el navegation con parametros explicado entre Aris y Daniel Gallego.">
+      <option name="closed" value="true" />
+      <created>1740428405406</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1740428405406</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Cambios para que el navegation con parametros explicado entre Aris y Daniel Gallego.&#10;Cambios para que coga los usuarios de la base de datos y para que funcione el cambiar la contraseña en tiempo real y se actualice en la base de datos.">
+      <option name="closed" value="true" />
+      <created>1740428459666</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1740428459666</updated>
+    </task>
+    <task id="LOCAL-00008" summary="LoginScreen terminado">
+      <option name="closed" value="true" />
+      <created>1740519861917</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1740519861917</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Recycler view:" />
     <MESSAGE value="Cambio al modo oscuro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambio al modo oscuro" />
+    <MESSAGE value="Imagenes que no me servian" />
+    <MESSAGE value="Imagenes que me sirven" />
+    <MESSAGE value="Cambio en las listas de los recycler por no mirar los baremos" />
+    <MESSAGE value="Cambios para que el navegation con parametros explicado entre Aris y Daniel Gallego." />
+    <MESSAGE value="Cambios para que el navegation con parametros explicado entre Aris y Daniel Gallego.&#10;Cambios para que coga los usuarios de la base de datos y para que funcione el cambiar la contraseña en tiempo real y se actualice en la base de datos." />
+    <MESSAGE value="LoginScreen terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="LoginScreen terminado" />
   </component>
 </project>
