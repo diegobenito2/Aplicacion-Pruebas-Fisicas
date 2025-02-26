@@ -51,8 +51,8 @@ fun ThemeSwitcherApp() {
             }, floatingActionButtonPosition = FabPosition.End
         ) { paddingValues ->
             Box(modifier = Modifier.padding(paddingValues)) {
-//                NavegationWrapper(navController)
-                CalculadoraNotasScreen("Abdominales",1)
+                NavegationWrapper(navController)
+//                CalculadoraNotasScreen("Abdominales",1)
             }
         }
     }

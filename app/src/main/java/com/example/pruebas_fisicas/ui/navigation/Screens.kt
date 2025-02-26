@@ -9,4 +9,6 @@ data class ForgotPass(val email: String)
 @Serializable
 data class InfoS(val userid: Int)
 @Serializable
-object Recycler
+data class Recycler(val userid: Int)
+@Serializable
+data class CalculoNotas(val prueba:String,val userid: Int)

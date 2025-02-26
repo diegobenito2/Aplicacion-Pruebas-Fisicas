@@ -11,27 +11,27 @@ fun calcularNotaGenerica(resultado: Float, baremo: List<Pair<Float, String>>): S
 // Función principal para calcular la nota
 fun calcularNota(nombrePrueba: String, resultado: Float, edad: Int, sexo: String): String {
     return when (nombrePrueba) {
-        "Abdominales" -> calcularNotaGenerica(
+        "Abdominales 30s" -> calcularNotaGenerica(
             resultado,
             baremoAbdominales[sexo]?.get(edad) ?: listOf()
         )
 
-        "Flexibilidad" -> calcularNotaGenerica(
+        "Flexión de tronco sentado" -> calcularNotaGenerica(
             resultado,
             baremoFlexibilidad[sexo]?.get(edad) ?: listOf()
         )
 
-        "Test Cooper" -> calcularNotaGenerica(
+        "Test de Cooper" -> calcularNotaGenerica(
             resultado,
             baremoTestCooper[sexo]?.get(edad) ?: listOf()
         )
 
-        "Velocidad 5x10" -> calcularNotaGenerica(
+        "Carrera ida y vuelta 10x5m" -> calcularNotaGenerica(
             resultado,
             baremoVelocidad[sexo]?.get(edad) ?: listOf()
         )
 
-        "Lanzamiento de balón" -> calcularNotaGenerica(
+        "Lanzamiento de balón medicinal" -> calcularNotaGenerica(
             resultado,
             baremoLanzamiento[sexo]?.get(edad) ?: listOf()
         )
@@ -237,7 +237,6 @@ val baremoAbdominales = mapOf(
         )
     )
 )
-
 val baremoFlexibilidad = mapOf(
     "Masculino" to mapOf(
         12 to listOf(
@@ -434,7 +433,6 @@ val baremoFlexibilidad = mapOf(
         )
     )
 )
-
 val baremoTestCooper = mapOf(
     "Masculino" to mapOf(
         12 to listOf(
@@ -712,7 +710,6 @@ val baremoVelocidad = mapOf(
         )
     )
 )
-
 val baremoLanzamiento = mapOf(
     "Masculino" to mapOf(
         15 to listOf(

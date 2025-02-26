@@ -99,7 +99,7 @@ fun Login(navController: NavHostController) {
                 val userconId = helperUser.getUser(email.trim())
                 if (userconId != null) {
                     if (user.email == userconId.email && user.password == userconId.password) {
-                        println("User ID: ${userconId.id}")
+                        println("userId en LoginScreen: ${userconId.id}")
                         navController.navigate(InfoS(userconId.id))
                     } else {
                         Toast.makeText(
@@ -148,30 +148,23 @@ fun buttons(
     }
 }
 
-@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun ForgotPasswordmethod(modifier: Modifier, navController: NavHostController, email: String) {
     val context = LocalContext.current
     val helperUser = HelperUser(context)
 
-    val snackbarHostState = remember { SnackbarHostState() }
-    val user: UserconID? = helperUser.getUser(email)
-    if (user == null) {
-        val coroutineScope = rememberCoroutineScope()
-        coroutineScope.launch {
-            snackbarHostState.showSnackbar("El usuario no existe")
-        }
-        return
-    }
 
-    Text(
-        "Olvidaste la contraseña?",
-        modifier.clickable {
-            navController.navigate(ForgotPass(user.email))
-        },
-        fontSize = 12.sp,
-        fontWeight = FontWeight.Bold
-    )
+    val user: UserconID? = helperUser.getUser(email)
+    if (user != null) {// Verificar si el usuario existe antes de mostrar el mensaje de olvidaste la contraseña
+        Text(
+            "Olvidaste la contraseña?",
+            modifier.clickable {
+                navController.navigate(ForgotPass(user.email))
+            },
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold
+        )
+    }
 
 }
 

@@ -21,7 +21,7 @@ open class BBdd(context: Context) : SQLiteOpenHelper(context, "PruebasFisicas", 
                 ")"
     private val borrarTableDatosUsuario = "DROP TABLE IF EXISTS datosUsuario"
     private val createTableNotaUsuarios =
-        "CREATE TABLE notasUsuarios(id INTEGER PRIMARY KEY AUTOINCREMENT,nombrePrueba VARCHAR(255),nota FLOAT,email VARCHAR(255),FOREIGN KEY(email) REFERENCES user(email))"
+        "CREATE TABLE notasUsuarios(id INTEGER PRIMARY KEY AUTOINCREMENT,nombrePrueba VARCHAR(255),nota FLOAT,userid Integer,FOREIGN KEY(userid) REFERENCES user(id))"
     private val borrarTableNotaUsuarios = "DROP TABLE IF EXISTS notasUsuarios"
 
     override fun onCreate(db: SQLiteDatabase?) {

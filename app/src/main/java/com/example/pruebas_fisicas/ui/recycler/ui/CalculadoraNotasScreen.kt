@@ -9,19 +9,17 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import calcularNota
+import com.example.pruebas_fisicas.BBDD.helpers.HelperNotasUsuarios
 import com.example.pruebas_fisicas.BBDD.helpers.HelperdatosUsuario
-import com.example.pruebas_fisicas.ui.info.textFields
+import com.example.pruebas_fisicas.ui.info.ui.textFields
 import com.example.pruebas_fisicas.ui.recycler.data.NotaUsuarios
 import com.example.pruebas_fisicas.ui.recycler.data.listPruebas
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -29,6 +27,7 @@ import kotlinx.coroutines.launch
 fun CalculadoraNotasScreen(nombrePrueba: String, userId: Int) {
     val context = LocalContext.current
     val helperDatos = remember { HelperdatosUsuario(context) }
+    val helperNotas = remember { HelperNotasUsuarios(context) }
     helperDatos.insertarDatosUsuario(1, 16, 65f, 182f, "Hombre")
     val datosUsuario = helperDatos.getDatosUsuarioPorId(userId)
     println("userId: $userId" + " " + datosUsuario?.edad + " " + datosUsuario?.sexo + " " + datosUsuario?.peso + " " + datosUsuario?.altura)
@@ -40,11 +39,10 @@ fun CalculadoraNotasScreen(nombrePrueba: String, userId: Int) {
                 selected = nombrePrueba,
                 onSelected = {
                     Spacer(Modifier.padding(top = 50.dp))
-                    pedirnotas(it, datosUsuario.edad, datosUsuario.sexo, userId)
+                    helperNotas.insertarOActualizarNota(pedirnotas(it, datosUsuario.edad, datosUsuario.sexo, userId))
                 }
             )
         }
-
     }
 }
 
@@ -74,7 +72,7 @@ fun ui(nombrePrueba: String, edad: Int, sexo: String): String {
                 modifier = Modifier.clickable {
                     notaFinal = calcularNota(nombrePrueba, notaNumerica, edad, sexo)
                     coroutineScope.launch {
-                        delay(2000)
+                        delay(1000)
                         showTextField = false
                     }
                 },

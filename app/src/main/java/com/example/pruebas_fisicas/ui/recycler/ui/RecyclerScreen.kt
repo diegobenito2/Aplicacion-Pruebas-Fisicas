@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pruebas_fisicas.BBDD.helpers.HelperdatosUsuario
+import com.example.pruebas_fisicas.ui.navigation.CalculoNotas
 import com.example.pruebas_fisicas.ui.recycler.data.Prueba
 import com.example.pruebas_fisicas.ui.recycler.data.listPruebas
 
@@ -130,7 +131,7 @@ fun RecyclerScreen(navController: NavHostController,userId:Int) {
         LazyColumn(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             items(filteredPruebas) { pruebaItem ->
                 itemPrueba(prueba = pruebaItem) {
-//                    navController.navigate()
+                    navController.navigate(CalculoNotas(it.Nombre,userId))
                 }
             }
         }
@@ -144,7 +145,7 @@ fun itemPrueba(prueba: Prueba, onItemSelected: (Prueba) -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable { OnItemClickListener(prueba) },
+            .clickable { onItemSelected(prueba) },
         elevation = CardDefaults.cardElevation(8.dp),
         border = BorderStroke(1.dp, Color.Gray)
     ) {
@@ -185,10 +186,4 @@ fun itemPrueba(prueba: Prueba, onItemSelected: (Prueba) -> Unit) {
             }
         }
     }
-}
-
-fun OnItemClickListener(prueba: Prueba) {
-
-
-
 }

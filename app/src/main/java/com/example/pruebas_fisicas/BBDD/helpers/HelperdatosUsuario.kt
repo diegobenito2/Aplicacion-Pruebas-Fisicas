@@ -3,7 +3,7 @@ package com.example.pruebas_fisicas.BBDD.helpers
 import android.content.ContentValues
 import android.content.Context
 import com.example.pruebas_fisicas.BBDD.BBdd
-import com.example.pruebas_fisicas.ui.info.DatosUsuario
+import com.example.pruebas_fisicas.ui.info.data.DatosUsuario
 
 class HelperdatosUsuario(context: Context) : BBdd(context) {
 

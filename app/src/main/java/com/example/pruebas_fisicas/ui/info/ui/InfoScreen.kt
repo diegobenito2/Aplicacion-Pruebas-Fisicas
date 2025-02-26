@@ -1,5 +1,5 @@
 // InfoScreen.kt ajustada para manejar datos desde SQLite
-package com.example.pruebas_fisicas.ui.info
+package com.example.pruebas_fisicas.ui.info.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,6 +27,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavHostController
 import com.example.pruebas_fisicas.BBDD.helpers.HelperdatosUsuario
+import com.example.pruebas_fisicas.ui.info.data.DatosUsuario
 import com.example.pruebas_fisicas.ui.login.ui.HeaderText
 import com.example.pruebas_fisicas.ui.navigation.Recycler
 
@@ -58,19 +59,23 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row (modifier = Modifier.fillMaxWidth().padding(top = 20.dp, bottom = 20.dp)){
+            Row (modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp, bottom = 20.dp)){
                 Icon(
                     imageVector = (Icons.Default.ArrowBack),
                     "Atrás",
                     modifier = Modifier
-                        .size(45.dp).align(Alignment.CenterVertically)
+                        .size(45.dp)
+                        .align(Alignment.CenterVertically)
                         .padding(start = 20.dp)
                         .clickable { navController.popBackStack() }
                 )
                 HeaderText(
                     "Información Personal",
                     Modifier
-                        .align(Alignment.CenterVertically).padding(start =30.dp)
+                        .align(Alignment.CenterVertically)
+                        .padding(start = 30.dp)
                 )
             }
 
@@ -152,6 +157,7 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
                 Text("IMC")
             }
 
+
             if (showimc) {
                 dialogIMC(imc = calcularIMC(helperDatos.getDatosUsuarioPorId(userId))) {
                     showimc = false
@@ -175,7 +181,8 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
                     modifier = Modifier
                         .size(45.dp)
                         .clickable {
-                            navController.navigate(Recycler)
+                            println("userId en infoScreen: $userId")
+                            navController.navigate(Recycler(userId))
                         }
                 )
             }
