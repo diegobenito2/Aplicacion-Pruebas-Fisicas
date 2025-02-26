@@ -42,7 +42,7 @@ fun calcularNota(nombrePrueba: String, resultado: Float, edad: Int, sexo: String
 
 // Definición de los baremos para cada prueba
 val baremoAbdominales = mapOf(
-    "Masculino" to mapOf(
+    "Hombre" to mapOf(
         12 to listOf(
             30f to "10",
             29f to "9.5",
@@ -139,7 +139,7 @@ val baremoAbdominales = mapOf(
             22f to "2"
         )
     ),
-    "Femenino" to mapOf(
+    "Mujer" to mapOf(
         12 to listOf(
             30f to "10",
             29f to "9.5",
@@ -238,7 +238,7 @@ val baremoAbdominales = mapOf(
     )
 )
 val baremoFlexibilidad = mapOf(
-    "Masculino" to mapOf(
+    "Hombre" to mapOf(
         12 to listOf(
             7f to "10",
             5f to "9.5",
@@ -335,7 +335,7 @@ val baremoFlexibilidad = mapOf(
             -9f to "2"
         )
     ),
-    "Femenino" to mapOf(
+    "Mujer" to mapOf(
         12 to listOf(
             7f to "10",
             5f to "9.5",
@@ -434,7 +434,7 @@ val baremoFlexibilidad = mapOf(
     )
 )
 val baremoTestCooper = mapOf(
-    "Masculino" to mapOf(
+    "Hombre" to mapOf(
         12 to listOf(
             2600f to "10",
             2400f to "9.5",
@@ -530,7 +530,7 @@ val baremoTestCooper = mapOf(
             1850f to "2.5",
             1800f to "2"
         )
-    ), "Femenino" to mapOf(
+    ), "Mujer" to mapOf(
         14 to listOf(
             2200f to "10",
             2050f to "9.5",
@@ -591,7 +591,7 @@ val baremoTestCooper = mapOf(
     )
 )
 val baremoVelocidad = mapOf(
-    "Masculino" to mapOf(
+    "Hombre" to mapOf(
         14 to listOf(
             11f to "10",
             12.6f to "9.5",
@@ -650,7 +650,7 @@ val baremoVelocidad = mapOf(
             15f to "2"
         )
     ),
-    "Femenino" to mapOf(
+    "Mujer" to mapOf(
         14 to listOf(
             11f to "10",
             13.4f to "9.5",
@@ -711,7 +711,7 @@ val baremoVelocidad = mapOf(
     )
 )
 val baremoLanzamiento = mapOf(
-    "Masculino" to mapOf(
+    "Hombre" to mapOf(
         15 to listOf(
             8.50f to "10",
             8.20f to "9.5",
@@ -751,7 +751,7 @@ val baremoLanzamiento = mapOf(
             4.70f to "2"
         )
     ),
-    "Femenino" to mapOf(
+    "Mujer" to mapOf(
         15 to listOf(
             8.50f to "10",
             8.20f to "9.5",

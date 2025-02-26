@@ -9,18 +9,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f2c45b-76e5-4235-9ad0-d3ff08761fba" name="Changes" comment="Guardar las notas">
+    <list default="true" id="c1f2c45b-76e5-4235-9ad0-d3ff08761fba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/BBdd.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/BBdd.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperNotasUsuarios.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperNotasUsuarios.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/ui/InfoScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/ui/InfoScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/NavigationWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/NavigationWrapper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/Baremos.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/Baremos.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/NotaUsuarios.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/NotaUsuarios.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/CalculadoraNotasScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/CalculadoraNotasScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/RecyclerScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/RecyclerScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/theme/Theme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/theme/Theme.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,24 +110,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/diego/Downloads/Aplicacion-Pruebas-Fisicas/app/src/main/java/com/example/pruebas_fisicas/ui/info",
-    "settings.editor.selected.configurable": "live.edit.configurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/diego/Downloads/Aplicacion-Pruebas-Fisicas/app/src/main/java/com/example/pruebas_fisicas/ui/info&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;live.edit.configurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\diego\Downloads\Aplicacion-Pruebas-Fisicas\app\src\main\java\com\example\pruebas_fisicas\ui\info" />
@@ -291,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740519861917</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="cambios">
+      <option name="closed" value="true" />
+      <created>1740584159048</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1740584159048</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -303,6 +312,7 @@
     <MESSAGE value="Cambios para que el navegation con parametros explicado entre Aris y Daniel Gallego." />
     <MESSAGE value="Cambios para que el navegation con parametros explicado entre Aris y Daniel Gallego.&#10;Cambios para que coga los usuarios de la base de datos y para que funcione el cambiar la contraseña en tiempo real y se actualice en la base de datos." />
     <MESSAGE value="LoginScreen terminado" />
-    <option name="LAST_COMMIT_MESSAGE" value="LoginScreen terminado" />
+    <MESSAGE value="cambios" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambios" />
   </component>
 </project>

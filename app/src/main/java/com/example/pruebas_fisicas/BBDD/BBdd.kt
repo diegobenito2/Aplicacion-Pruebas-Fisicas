@@ -6,7 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper
 
 open class BBdd(context: Context) : SQLiteOpenHelper(context, "PruebasFisicas", null, 1) {
     private val createTableUser =
-        "CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT, email VARCHAR(255), password VARCHAR(255))"
+        "CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT" +
+                ", email VARCHAR(255)" +
+                ", password VARCHAR(255))"
     private val borrarTableUser = "DROP TABLE IF EXISTS user"
 
     private val createTableDatosUsuario =
@@ -20,8 +22,12 @@ open class BBdd(context: Context) : SQLiteOpenHelper(context, "PruebasFisicas", 
                 "FOREIGN KEY(userId) REFERENCES user(id)" +
                 ")"
     private val borrarTableDatosUsuario = "DROP TABLE IF EXISTS datosUsuario"
-    private val createTableNotaUsuarios =
-        "CREATE TABLE notasUsuarios(id INTEGER PRIMARY KEY AUTOINCREMENT,nombrePrueba VARCHAR(255),nota FLOAT,userid Integer,FOREIGN KEY(userid) REFERENCES user(id))"
+    private val createTableNotaUsuarios = "CREATE TABLE notasUsuarios(" +
+            "id INTEGER PRIMARY KEY AUTOINCREMENT" +
+            ",nombrePrueba VARCHAR(255)" +
+            ",nota FLOAT" +
+            ",userid Integer" +
+            ",FOREIGN KEY(userid) REFERENCES user(id))"
     private val borrarTableNotaUsuarios = "DROP TABLE IF EXISTS notasUsuarios"
 
     override fun onCreate(db: SQLiteDatabase?) {

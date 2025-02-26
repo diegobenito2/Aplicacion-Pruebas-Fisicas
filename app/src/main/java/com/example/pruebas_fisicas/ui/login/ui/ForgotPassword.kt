@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -49,7 +51,7 @@ fun ForgotPassword(navigateToLogin:()->Unit, email: String) {
     var isLoading by rememberSaveable { mutableStateOf(false) }
     val loginEnable = isValidPassword(password)
     val coroutineScope = rememberCoroutineScope()
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
         Column {
             HeaderText("Cambiar Contraseña", Modifier.align(Alignment.CenterHorizontally))
             Spacer(modifier = Modifier.padding(16.dp))

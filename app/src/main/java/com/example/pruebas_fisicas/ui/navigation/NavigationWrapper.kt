@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.toRoute
 import com.example.pruebas_fisicas.ui.info.ui.InfoScreen
 import com.example.pruebas_fisicas.ui.login.ui.ForgotScreen
 import com.example.pruebas_fisicas.ui.login.ui.LoginScreen
@@ -14,35 +15,48 @@ import com.example.pruebas_fisicas.ui.recycler.ui.RecyclerScreen
 fun NavegationWrapper(navController: NavHostController) {
     NavHost(navController = navController, startDestination = Login) {
         composable<Login> {
-            LoginScreen(navController)
+
+            LoginScreen(
+                navigateToInfoS = { userId -> navController.navigate(InfoS(userId)) },
+                navigateToForgotPass = { email -> navController.navigate(ForgotPass(email)) }
+            )
         }
+
         composable<ForgotPass> {
-            val email = it.arguments?.getString("email") ?: ""
-            ForgotScreen(navController, email)
+            val email: ForgotPass = it.toRoute()
+            ForgotScreen(
+                { navController.navigate(Login) { popUpTo<Login> { inclusive = true } } },
+                email.email
+            )
         }
+
         composable<InfoS> {
-            val userId = it.arguments?.getInt("userId")
-            println("userId infoS navegationwrapper: $userId")
-            if (userId != null && userId != 0) {
-                InfoScreen(navController, userId)
-            }
+            val infosArgs: InfoS = it.toRoute()
+            InfoScreen({
+                navController.navigate(Recycler(infosArgs.userid))
+            }, { navController.popBackStack() }, userId = infosArgs.userid)
         }
+
         composable<Recycler> {
-            val userId = it.arguments?.getInt("userId")
-            println("userId recycler navegationwrapper: $userId")
-            if (userId != null) {
-                RecyclerScreen(navController, userId)
-            }
+            val recyclerArgs: Recycler = it.toRoute()
+            RecyclerScreen(
+                navigationToInfoS = { navController.navigate(InfoS(recyclerArgs.userid)){ popUpTo<InfoS> { inclusive = true } } },
+                navigationToCalculoNotas = { prueba ->
+                    navController.navigate(CalculoNotas(prueba, recyclerArgs.userid))
+                },
+                userId = recyclerArgs.userid
+            )
         }
+
+
         composable<CalculoNotas> {
-            val userId = it.arguments?.getInt("userId")
-            val prueba = it.arguments?.getString("prueba") ?: ""
-            if (userId != null && prueba != "") {
-                CalculadoraNotasScreen(prueba, userId)
+            val notas: CalculoNotas = it.toRoute()
+
+            CalculadoraNotasScreen(notas.prueba, notas.userid){
+                navController.navigate(Recycler(notas.userid)){ popUpTo<Recycler> { inclusive = true } }
             }
+
         }
-
-
     }
 }
 

@@ -3,6 +3,7 @@ package com.example.pruebas_fisicas.ui.login.ui
 import android.util.Patterns
 import android.widget.Toast
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,7 +13,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -79,7 +82,7 @@ fun Login(navigateToInfoS: (Int) -> Unit, navigateToForgotPass: (String) -> Unit
     val loginEnable = isValidEmail(email) && isValidPassword(password)
     val coroutineScope = rememberCoroutineScope()
 
-    Column {
+    Column (Modifier.verticalScroll(rememberScrollState())){
         HeaderText("Iniciar Sesión", Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(16.dp))
         EmailField(email) { email = it }
@@ -95,7 +98,6 @@ fun Login(navigateToInfoS: (Int) -> Unit, navigateToForgotPass: (String) -> Unit
                 val userconId = helperUser.getUser(email.trim())
                 if (userconId != null) {
                     if (user.email == userconId.email && user.password == userconId.password) {
-                        println("userId en LoginScreen: ${userconId.id}")
                         navigateToInfoS(userconId.id)
                     } else {
                         Toast.makeText(
@@ -131,7 +133,7 @@ fun buttons(
             onLoginSelected()
         },
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth().padding(end = 20.dp, start = 20.dp)
             .height(48.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color(0xFF6200EE), // Color del fondo del botón
@@ -155,7 +157,7 @@ fun ForgotPasswordmethod(modifier: Modifier, navigateToForgotPass: (String) -> U
     if (user != null) {// Verificar si el usuario existe antes de mostrar el mensaje de olvidaste la contraseña
         Text(
             "Olvidaste la contraseña?",
-            modifier.clickable {
+            modifier.padding(end = 20.dp).clickable {
                 navigateToForgotPass(email)
             },
             fontSize = 12.sp,

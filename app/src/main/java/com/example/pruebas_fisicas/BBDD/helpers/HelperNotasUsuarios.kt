@@ -24,7 +24,7 @@ class HelperNotasUsuarios(contextapp: Context) : BBdd(context = contextapp) {
             // Si no se actualizó ninguna fila, insertamos una nueva nota
             val valoresInsercion = ContentValues().apply {
                 put("nombrePrueba", notaUsuario.nombrePrueba)
-                put("nota", notaUsuario.nota.toFloat())
+                put("nota", notaUsuario.nota)
                 put("userid", notaUsuario.userid)
             }
             db.insert("notasUsuarios", null, valoresInsercion)
@@ -39,18 +39,22 @@ class HelperNotasUsuarios(contextapp: Context) : BBdd(context = contextapp) {
 
         val cursor = db.rawQuery("SELECT nombrePrueba, nota FROM notasUsuarios WHERE userid = ?", arrayOf(userId.toString()))
 
-        if (cursor.moveToFirst()) {
-            do {
-                val nombrePrueba = cursor.getString(0)
-                val nota = cursor.getFloat(1)
-                listaNotas.add(NotaUsuarios(nombrePrueba,nota, userId))
-            } while (cursor.moveToNext())
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    val nombrePrueba = cursor.getString(0)
+                    val nota = cursor.getFloat(1)
+                    listaNotas.add(NotaUsuarios(nombrePrueba, nota, userId))
+                } while (cursor.moveToNext())
+            }
+            cursor.close()
         }
-        cursor.close()
+
         db.close()
 
         return listaNotas
     }
+
 
     fun calcularNotaMedia(notas: List<NotaUsuarios>): Float {
         var suma = 0f

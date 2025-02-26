@@ -2,11 +2,15 @@
 package com.example.pruebas_fisicas.ui.info.ui
 
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -30,6 +34,7 @@ import com.example.pruebas_fisicas.BBDD.helpers.HelperNotasUsuarios
 import com.example.pruebas_fisicas.BBDD.helpers.HelperdatosUsuario
 import com.example.pruebas_fisicas.ui.info.data.DatosUsuario
 import com.example.pruebas_fisicas.ui.login.ui.HeaderText
+import com.example.pruebas_fisicas.ui.recycler.data.NotaUsuarios
 
 @Composable
 fun InfoScreen(navigateToRecycler: (Int) -> Unit, navigateToBack: () -> Unit, userId: Int) {
@@ -50,10 +55,9 @@ fun InfoScreen(navigateToRecycler: (Int) -> Unit, navigateToBack: () -> Unit, us
     var enableimcbutton by rememberSaveable { mutableStateOf(false) }
     var showimc by rememberSaveable { mutableStateOf(false) }
     var showNotas by rememberSaveable { mutableStateOf(false) }
-    var enableNotasbutton by rememberSaveable { mutableStateOf(false) }
-    val helper = HelperNotasUsuarios(context)
-    val notas = helper.obtenerNotasUsuario(userId)
-    Box {
+
+
+    Box(Modifier.verticalScroll(rememberScrollState())) {
         Column(
             modifier = Modifier
                 .padding(16.dp)
@@ -168,10 +172,9 @@ fun InfoScreen(navigateToRecycler: (Int) -> Unit, navigateToBack: () -> Unit, us
                 Text("IMC")
             }
             Spacer(Modifier.padding(top = 20.dp))
+
             //Activamos el botón de notas
-            if (notas.isNotEmpty()) {
-                enableNotasbutton = true
-            }
+
             //Botón de notas
             Button(
                 onClick = {
@@ -187,7 +190,8 @@ fun InfoScreen(navigateToRecycler: (Int) -> Unit, navigateToBack: () -> Unit, us
                     disabledContainerColor = Color(0xFFBDBDBD),
                     disabledContentColor = Color(0xFF757575)
                 ),
-                enabled = enableNotasbutton
+                enabled = activarBotonNotas(context, userId)
+//
             ) {
                 Text("Mostrar Notas")
             }
@@ -224,6 +228,7 @@ fun InfoScreen(navigateToRecycler: (Int) -> Unit, navigateToBack: () -> Unit, us
                             navigateToRecycler(userId)
                         }
                 )
+                Spacer(modifier = Modifier.weight(1f))
             }
 
         }
@@ -239,6 +244,7 @@ fun textFields(
     onValueChange: (String) -> Unit
 ) {
     var text by remember { mutableStateOf(value) }
+//    var placeholder by remember { mutableStateOf("") }
     TextField(
         value = text,
         onValueChange = {
@@ -442,6 +448,11 @@ fun dialogNotas(userId: Int, onDismiss: () -> Unit) {
 }
 
 
+fun activarBotonNotas(context: Context, userId: Int): Boolean {
+    val helper = HelperNotasUsuarios(context)
+    val notas:List<NotaUsuarios> = helper.obtenerNotasUsuario(userId)
+    return notas.isNotEmpty()
+}
 
 
 
