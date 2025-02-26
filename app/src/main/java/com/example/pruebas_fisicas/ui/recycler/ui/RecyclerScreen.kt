@@ -41,15 +41,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.example.pruebas_fisicas.BBDD.helpers.HelperdatosUsuario
-import com.example.pruebas_fisicas.ui.navigation.CalculoNotas
 import com.example.pruebas_fisicas.ui.recycler.data.Prueba
 import com.example.pruebas_fisicas.ui.recycler.data.listPruebas
 
 
 @Composable
-fun RecyclerScreen(navController: NavHostController,userId:Int) {
+fun RecyclerScreen(
+    navigationToInfoS: (Int) -> Unit,
+    navigationToCalculoNotas: (Int,String) -> Unit,
+    userId:Int) {
     val context = LocalContext.current
     val helperDatos = remember { HelperdatosUsuario(context) }
     val user= helperDatos.getDatosUsuarioPorId(userId)
@@ -80,7 +81,7 @@ fun RecyclerScreen(navController: NavHostController,userId:Int) {
                 modifier = Modifier
                     .size(45.dp)
                     .padding(start = 20.dp)
-                    .clickable { navController.popBackStack() }
+                    .clickable { navigationToInfoS(userId) }
             )
             // Campo de búsqueda
             TextField(
@@ -131,7 +132,7 @@ fun RecyclerScreen(navController: NavHostController,userId:Int) {
         LazyColumn(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             items(filteredPruebas) { pruebaItem ->
                 itemPrueba(prueba = pruebaItem) {
-                    navController.navigate(CalculoNotas(it.Nombre,userId))
+                    navigationToCalculoNotas(userId,pruebaItem.Nombre)
                 }
             }
         }

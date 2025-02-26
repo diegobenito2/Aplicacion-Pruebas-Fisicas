@@ -33,6 +33,30 @@ class HelperNotasUsuarios(contextapp: Context) : BBdd(context = contextapp) {
         }.also { db.close() }
     }
 
+    fun obtenerNotasUsuario(userId: Int): List<NotaUsuarios> {
+        val db: SQLiteDatabase = this.readableDatabase
+        val listaNotas = mutableListOf<NotaUsuarios>()
 
+        val cursor = db.rawQuery("SELECT nombrePrueba, nota FROM notasUsuarios WHERE userid = ?", arrayOf(userId.toString()))
 
+        if (cursor.moveToFirst()) {
+            do {
+                val nombrePrueba = cursor.getString(0)
+                val nota = cursor.getFloat(1)
+                listaNotas.add(NotaUsuarios(nombrePrueba,nota, userId))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+
+        return listaNotas
+    }
+
+    fun calcularNotaMedia(notas: List<NotaUsuarios>): Float {
+        var suma = 0f
+        for (nota in notas) {
+            suma += nota.nota
+        }
+        return if (notas.isNotEmpty()) suma / notas.size else 0f
+    }
 }

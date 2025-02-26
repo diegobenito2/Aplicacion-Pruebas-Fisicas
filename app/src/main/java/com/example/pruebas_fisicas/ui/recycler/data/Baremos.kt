@@ -1,15 +1,15 @@
 // Función genérica para calcular la nota basada en los baremos
-fun calcularNotaGenerica(resultado: Float, baremo: List<Pair<Float, String>>): String {
+fun calcularNotaGenerica(resultado: Float, baremo: List<Pair<Float, String>>): Float {
     for ((limite, nota) in baremo) {
         if (resultado >= limite) {
-            return nota
+            return nota.toFloat()
         }
     }
-    return "0"
+    return 0f
 }
 
 // Función principal para calcular la nota
-fun calcularNota(nombrePrueba: String, resultado: Float, edad: Int, sexo: String): String {
+fun calcularNota(nombrePrueba: String, resultado: Float, edad: Int, sexo: String): Float {
     return when (nombrePrueba) {
         "Abdominales 30s" -> calcularNotaGenerica(
             resultado,
@@ -36,7 +36,7 @@ fun calcularNota(nombrePrueba: String, resultado: Float, edad: Int, sexo: String
             baremoLanzamiento[sexo]?.get(edad) ?: listOf()
         )
 
-        else -> "N/A"
+        else -> 0f
     }
 }
 

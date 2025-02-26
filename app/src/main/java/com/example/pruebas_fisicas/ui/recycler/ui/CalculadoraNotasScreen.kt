@@ -28,7 +28,6 @@ fun CalculadoraNotasScreen(nombrePrueba: String, userId: Int) {
     val context = LocalContext.current
     val helperDatos = remember { HelperdatosUsuario(context) }
     val helperNotas = remember { HelperNotasUsuarios(context) }
-    helperDatos.insertarDatosUsuario(1, 16, 65f, 182f, "Hombre")
     val datosUsuario = helperDatos.getDatosUsuarioPorId(userId)
     println("userId: $userId" + " " + datosUsuario?.edad + " " + datosUsuario?.sexo + " " + datosUsuario?.peso + " " + datosUsuario?.altura)
     if (datosUsuario != null) {
@@ -52,10 +51,10 @@ fun pedirnotas(nombrePrueba: String, edad: Int, sexo: String, userId: Int): Nota
 }
 
 @Composable
-fun ui(nombrePrueba: String, edad: Int, sexo: String): String {
+fun ui(nombrePrueba: String, edad: Int, sexo: String): Float {
     var notaTexto by remember { mutableStateOf("") }
     var notaNumerica by remember { mutableStateOf(0f) }
-    var notaFinal by remember { mutableStateOf("") }
+    var notaFinal by remember { mutableStateOf(0f) }
     val coroutineScope = rememberCoroutineScope()
     var showTextField by remember { mutableStateOf(true) }
     Spacer(Modifier.padding(top = 50.dp))

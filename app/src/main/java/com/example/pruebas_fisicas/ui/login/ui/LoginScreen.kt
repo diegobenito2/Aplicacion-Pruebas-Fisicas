@@ -1,7 +1,5 @@
 package com.example.pruebas_fisicas.ui.login.ui
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.util.Patterns
 import android.widget.Toast
 import androidx.compose.foundation.clickable
@@ -20,14 +18,12 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -42,18 +38,16 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.example.pruebas_fisicas.BBDD.helpers.HelperUser
 import com.example.pruebas_fisicas.R
 import com.example.pruebas_fisicas.ui.login.data.User
 import com.example.pruebas_fisicas.ui.login.data.UserconID
 import com.example.pruebas_fisicas.ui.navigation.ForgotPass
-import com.example.pruebas_fisicas.ui.navigation.InfoS
 import kotlinx.coroutines.launch
 
 
 @Composable
-fun LoginScreen(navController: NavHostController) {
+fun LoginScreen(navigateToInfoS: (id: Int) -> Unit, navigateToForgotPass: (email: String) -> Unit) {
     Scaffold { innerpadding ->
         val modifier: Modifier = Modifier
             .fillMaxSize()
@@ -66,7 +60,7 @@ fun LoginScreen(navController: NavHostController) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Login(navController)
+                Login(navigateToInfoS = navigateToInfoS, navigateToForgotPass = navigateToForgotPass)
             }
         }
     }
@@ -74,7 +68,9 @@ fun LoginScreen(navController: NavHostController) {
 
 
 @Composable
-fun Login(navController: NavHostController) {
+fun Login(navigateToInfoS: (Int) -> Unit, navigateToForgotPass: (String) -> Unit)
+
+{
     val context = LocalContext.current
     val helperUser = HelperUser(context)
     var email by rememberSaveable { mutableStateOf("") }
@@ -90,7 +86,7 @@ fun Login(navController: NavHostController) {
         Spacer(modifier = Modifier.padding(8.dp))
         PasswordField("Contraseña", password) { password = it }
         Spacer(modifier = Modifier.padding(8.dp))
-        ForgotPasswordmethod(Modifier.align(Alignment.End), navController, email)
+        ForgotPasswordmethod(Modifier.align(Alignment.End),navigateToForgotPass, email)
         Spacer(modifier = Modifier.padding(16.dp))
         val user = User(email, password)
         buttons("Iniciar Sesión", loginEnable) {
@@ -100,7 +96,7 @@ fun Login(navController: NavHostController) {
                 if (userconId != null) {
                     if (user.email == userconId.email && user.password == userconId.password) {
                         println("userId en LoginScreen: ${userconId.id}")
-                        navController.navigate(InfoS(userconId.id))
+                        navigateToInfoS(userconId.id)
                     } else {
                         Toast.makeText(
                             context,
@@ -149,7 +145,8 @@ fun buttons(
 }
 
 @Composable
-fun ForgotPasswordmethod(modifier: Modifier, navController: NavHostController, email: String) {
+fun ForgotPasswordmethod(modifier: Modifier, navigateToForgotPass: (String) -> Unit, email: String)
+ {
     val context = LocalContext.current
     val helperUser = HelperUser(context)
 
@@ -159,7 +156,7 @@ fun ForgotPasswordmethod(modifier: Modifier, navController: NavHostController, e
         Text(
             "Olvidaste la contraseña?",
             modifier.clickable {
-                navController.navigate(ForgotPass(user.email))
+                navigateToForgotPass(email)
             },
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold

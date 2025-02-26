@@ -25,7 +25,7 @@ import com.example.pruebas_fisicas.ui.navigation.InfoS
 import kotlinx.coroutines.launch
 
 @Composable
-fun ForgotScreen(navController: NavHostController, email: String) {
+fun ForgotScreen(navigateToLogin:()->Unit, email: String) {
     val modifier: Modifier = Modifier
         .fillMaxSize()
         .padding(16.dp)
@@ -35,13 +35,13 @@ fun ForgotScreen(navController: NavHostController, email: String) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            ForgotPassword(navController, email)
+            ForgotPassword(navigateToLogin, email)
         }
     }
 }
 
 @Composable
-fun ForgotPassword(navController: NavHostController, email: String) {
+fun ForgotPassword(navigateToLogin:()->Unit, email: String) {
     val context = LocalContext.current
     val helperUser = HelperUser(context)
     val user: UserconID? = helperUser.getUser(email)
@@ -67,7 +67,7 @@ fun ForgotPassword(navController: NavHostController, email: String) {
                                     "¡¡Contraseña cambiada con éxito!!",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                                navController.popBackStack()
+                                navigateToLogin()
                             } else {
                                 Toast.makeText(
                                     context,

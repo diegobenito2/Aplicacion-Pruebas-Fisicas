@@ -1,6 +1,7 @@
 // InfoScreen.kt ajustada para manejar datos desde SQLite
 package com.example.pruebas_fisicas.ui.info.ui
 
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -25,15 +26,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import androidx.navigation.NavHostController
+import com.example.pruebas_fisicas.BBDD.helpers.HelperNotasUsuarios
 import com.example.pruebas_fisicas.BBDD.helpers.HelperdatosUsuario
 import com.example.pruebas_fisicas.ui.info.data.DatosUsuario
 import com.example.pruebas_fisicas.ui.login.ui.HeaderText
-import com.example.pruebas_fisicas.ui.navigation.Recycler
 
 @Composable
-fun InfoScreen(navController: NavHostController, userId: Int) {
-
+fun InfoScreen(navigateToRecycler: (Int) -> Unit, navigateToBack: () -> Unit, userId: Int) {
     val context = LocalContext.current
     val helperDatos = remember { HelperdatosUsuario(context) }
     var datos by remember {
@@ -50,7 +49,10 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
     var enableSaveButton by rememberSaveable { mutableStateOf(false) }
     var enableimcbutton by rememberSaveable { mutableStateOf(false) }
     var showimc by rememberSaveable { mutableStateOf(false) }
-
+    var showNotas by rememberSaveable { mutableStateOf(false) }
+    var enableNotasbutton by rememberSaveable { mutableStateOf(false) }
+    val helper = HelperNotasUsuarios(context)
+    val notas = helper.obtenerNotasUsuario(userId)
     Box {
         Column(
             modifier = Modifier
@@ -59,9 +61,12 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row (modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 20.dp, bottom = 20.dp)){
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 20.dp, bottom = 20.dp)
+            ) {
+                //Icono de Volver Atras
                 Icon(
                     imageVector = (Icons.Default.ArrowBack),
                     "Atrás",
@@ -69,7 +74,7 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
                         .size(45.dp)
                         .align(Alignment.CenterVertically)
                         .padding(start = 20.dp)
-                        .clickable { navController.popBackStack() }
+                        .clickable { navigateToBack() }
                 )
                 HeaderText(
                     "Información Personal",
@@ -104,6 +109,7 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
 
             Spacer(Modifier.padding(top = 20.dp))
 
+            //Insertamos o Actualizamos los datos de usuario en la BBDD
             Button(
                 onClick = {
                     // Guardamos los datos completos (edad, peso, altura, sexo)
@@ -135,17 +141,22 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
                 Text("Guardar Datos")
             }
 
+            //Activamos el botón de IMC
             if (helperDatos.getDatosUsuarioPorId(userId) != null) {
                 enableimcbutton = true
             }
 
+            Spacer(Modifier.padding(top = 20.dp))
+
+            //Botón de IMC
             Button(
                 onClick = {
                     showimc = true
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(48.dp),
+                    .height(48.dp)
+                    .padding(end = 100.dp, start = 100.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF6200EE),
                     contentColor = Color.White,
@@ -156,25 +167,53 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
             ) {
                 Text("IMC")
             }
-
-
+            Spacer(Modifier.padding(top = 20.dp))
+            //Activamos el botón de notas
+            if (notas.isNotEmpty()) {
+                enableNotasbutton = true
+            }
+            //Botón de notas
+            Button(
+                onClick = {
+                    showNotas = true
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(48.dp)
+                    .padding(end = 100.dp, start = 100.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF6200EE),
+                    contentColor = Color.White,
+                    disabledContainerColor = Color(0xFFBDBDBD),
+                    disabledContentColor = Color(0xFF757575)
+                ),
+                enabled = enableNotasbutton
+            ) {
+                Text("Mostrar Notas")
+            }
+            //Mostrar el dialog de IMC
             if (showimc) {
                 dialogIMC(imc = calcularIMC(helperDatos.getDatosUsuarioPorId(userId))) {
                     showimc = false
                 }
             }
-
-            Spacer(Modifier.padding(top = 20.dp))
+            //Mostrar el dialog de notas
+            if (showNotas) {
+                dialogNotas(userId) {
+                    showNotas = false
+                }
+            }
 
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 150.dp)
+                    .padding(top = 100.dp)
                     .align(Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Spacer(modifier = Modifier.weight(1f)) // Empuja el icono a la derecha
 
+                //Icono de siguiente
                 Icon(
                     imageVector = Icons.Default.ArrowForward,
                     contentDescription = "Siguiente",
@@ -182,7 +221,7 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
                         .size(45.dp)
                         .clickable {
                             println("userId en infoScreen: $userId")
-                            navController.navigate(Recycler(userId))
+                            navigateToRecycler(userId)
                         }
                 )
             }
@@ -190,6 +229,7 @@ fun InfoScreen(navController: NavHostController, userId: Int) {
         }
     }
 }
+
 
 @Composable
 fun textFields(
@@ -346,6 +386,62 @@ fun dialogIMC(imc: Float, onDismiss: () -> Unit) {
         }
     }
 }
+
+@Composable
+fun dialogNotas(userId: Int, onDismiss: () -> Unit) {
+    val context = LocalContext.current
+    val helper = HelperNotasUsuarios(context)
+    val notas = helper.obtenerNotasUsuario(userId)
+    val notaMedia = helper.calcularNotaMedia(notas)
+    Dialog(
+        onDismissRequest = { onDismiss() },
+        properties = DialogProperties(
+            dismissOnClickOutside = false,
+            dismissOnBackPress = false
+        )
+    ) {
+        Column(
+            Modifier
+                .width(300.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .background(Color(207, 159, 255))
+                .padding(16.dp)
+        ) {
+            Text(
+                text = "Notas de tus pruebas",
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            notas.forEach { nota ->
+                Text(text = "${nota.nombrePrueba}: ${nota.nota}", textAlign = TextAlign.Center)
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Text(
+                text = "Nota media: %.2f".format(notaMedia),
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(
+                onClick = { onDismiss() },
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ) {
+                Text("Cerrar")
+            }
+        }
+    }
+}
+
+
 
 
 
