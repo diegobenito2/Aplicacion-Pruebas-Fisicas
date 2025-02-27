@@ -59,6 +59,8 @@ fun ForgotPassword(navigateToLogin:()->Unit, email: String) {
             Spacer(modifier = Modifier.padding(8.dp))
             buttons("Cambiar contraseña", loginEnable) {
                 coroutineScope.launch {
+/*Se usa una corutina que es un hilo en java para que no se bloqué la interfaz de usuario al cambiar la contraseña. */
+
                     isLoading = true
                     if (user != null) {
                         if (user.password != password) {

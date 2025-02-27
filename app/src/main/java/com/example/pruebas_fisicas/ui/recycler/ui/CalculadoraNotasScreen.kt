@@ -34,22 +34,27 @@ fun CalculadoraNotasScreen(nombrePrueba: String, userId: Int, onBack: () -> Unit
     val datosUsuario = helperDatos.getDatosUsuarioPorId(userId)
 
     if (datosUsuario != null) {
-        Column(modifier = Modifier
-            .verticalScroll(rememberScrollState())) {
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)) {
+        Column(
+            modifier = Modifier
+                .verticalScroll(rememberScrollState())
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = "Volver",
-                    modifier = Modifier.clickable { onBack() }
+                    modifier = Modifier.clickable { onBack() },
+                    tint = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.weight(1f))
             }
 
             HeaderText(nombrePrueba, Modifier.align(Alignment.CenterHorizontally))
 
-            val notaFinal = ui(nombrePrueba, datosUsuario.edad, datosUsuario.sexo,context)
+            val notaFinal = ui(nombrePrueba, datosUsuario.edad, datosUsuario.sexo, context)
             println("Nota final: $notaFinal")
             helperNotas.insertarOActualizarNota(NotaUsuarios(nombrePrueba, notaFinal, userId))
         }
@@ -57,7 +62,7 @@ fun CalculadoraNotasScreen(nombrePrueba: String, userId: Int, onBack: () -> Unit
 }
 
 @Composable
-fun ui(nombrePrueba: String, edad: Int, sexo: String,context: Context): Float {
+fun ui(nombrePrueba: String, edad: Int, sexo: String, context: Context): Float {
     var notaTexto by remember { mutableStateOf("") }
     var notaNumerica by remember { mutableStateOf(0f) }
     var notaFinal by remember { mutableStateOf(0f) }
@@ -67,7 +72,7 @@ fun ui(nombrePrueba: String, edad: Int, sexo: String,context: Context): Float {
             notaTexto = it
             notaNumerica = it.toFloatOrNull() ?: 0f
         }
-        Row (modifier = Modifier.padding(16.dp)) {
+        Row(modifier = Modifier.padding(16.dp)) {
 
             Icon(
                 Icons.Default.Check,

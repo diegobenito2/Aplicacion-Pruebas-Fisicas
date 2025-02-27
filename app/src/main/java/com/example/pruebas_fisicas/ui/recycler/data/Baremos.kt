@@ -10,30 +10,31 @@ fun calcularNotaGenerica(resultado: Float, baremo: List<Pair<Float, String>>): F
 
 // Función principal para calcular la nota
 fun calcularNota(nombrePrueba: String, resultado: Float, edad: Int, sexo: String): Float {
+    val edadBaremo = if (edad > 16) 16 else if (edad < 12) 12 else edad
     return when (nombrePrueba) {
         "Abdominales 30s" -> calcularNotaGenerica(
             resultado,
-            baremoAbdominales[sexo]?.get(edad) ?: listOf()
+            baremoAbdominales[sexo]?.get(edadBaremo) ?: listOf()
         )
 
         "Flexión de tronco sentado" -> calcularNotaGenerica(
             resultado,
-            baremoFlexibilidad[sexo]?.get(edad) ?: listOf()
+            baremoFlexibilidad[sexo]?.get(edadBaremo) ?: listOf()
         )
 
         "Test de Cooper" -> calcularNotaGenerica(
             resultado,
-            baremoTestCooper[sexo]?.get(edad) ?: listOf()
+            baremoTestCooper[sexo]?.get(edadBaremo) ?: listOf()
         )
 
         "Carrera ida y vuelta 10x5m" -> calcularNotaGenerica(
             resultado,
-            baremoVelocidad[sexo]?.get(edad) ?: listOf()
+            baremoVelocidad[sexo]?.get(edadBaremo) ?: listOf()
         )
 
         "Lanzamiento de balón medicinal" -> calcularNotaGenerica(
             resultado,
-            baremoLanzamiento[sexo]?.get(edad) ?: listOf()
+            baremoLanzamiento[sexo]?.get(edadBaremo) ?: listOf()
         )
 
         else -> 0f

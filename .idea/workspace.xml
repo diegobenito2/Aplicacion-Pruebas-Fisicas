@@ -10,18 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1f2c45b-76e5-4235-9ad0-d3ff08761fba" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/BBdd.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/BBdd.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperNotasUsuarios.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/BBDD/helpers/HelperNotasUsuarios.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/ui/InfoScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/ui/InfoScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/NavigationWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/NavigationWrapper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/Baremos.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/Baremos.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/CalculadoraNotasScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/CalculadoraNotasScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/RecyclerScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/RecyclerScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/theme/Theme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/theme/Theme.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +25,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\diego\.android\avd\Pixel_9_Pro_API_35_1.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Diego\.android\avd\Medium_Phone_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -96,7 +90,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/diegobenito2/Aplicacion-Pruebas-Fisicas.git&quot;,
-    &quot;accountId&quot;: &quot;3fcc4854-54fd-4b4c-8923-5fab51a7252e&quot;
+    &quot;accountId&quot;: &quot;61e2ec5a-3c65-481b-bfb5-6948f127c0c6&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -124,7 +118,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/diego/Downloads/Aplicacion-Pruebas-Fisicas/app/src/main/java/com/example/pruebas_fisicas/ui/info&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Diego/Downloads/Aplicacion-Pruebas-Fisicas&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;live.edit.configurable&quot;
   }
 }</component>

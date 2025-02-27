@@ -235,7 +235,6 @@ fun InfoScreen(navigateToRecycler: (Int) -> Unit, navigateToBack: () -> Unit, us
     }
 }
 
-
 @Composable
 fun textFields(
     label: String,
@@ -244,14 +243,19 @@ fun textFields(
     onValueChange: (String) -> Unit
 ) {
     var text by remember { mutableStateOf(value) }
-//    var placeholder by remember { mutableStateOf("") }
+    val placeholder = when {
+        value == "0" || value == "0.0" -> "Ingrese $label"
+        else -> value
+    }
+
     TextField(
-        value = text,
+        value = if (text == "0" || text == "0.0") "" else text,
         onValueChange = {
             text = it
             onValueChange(it)
         },
         label = { Text(label) },
+        placeholder = { Text(placeholder) },
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = ImeAction.Done),
         modifier = Modifier
             .fillMaxWidth()
