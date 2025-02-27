@@ -9,13 +9,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f2c45b-76e5-4235-9ad0-d3ff08761fba" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c1f2c45b-76e5-4235-9ad0-d3ff08761fba" name="Changes" comment="que si la edad es mayor o menor a 16 y 12 que coja esa edad">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icono.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/ui/InfoScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/info/ui/InfoScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/ForgotPassword.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/Baremos.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/Baremos.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/login/ui/LoginScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/NavigationWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/navigation/NavigationWrapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/List.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/data/List.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/CalculadoraNotasScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pruebas_fisicas/ui/recycler/ui/CalculadoraNotasScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +30,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Diego\.android\avd\Medium_Phone_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=a9010dd20013)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -87,12 +92,12 @@
     &quot;assignee&quot;: &quot;diegobenito2&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/diegobenito2/Aplicacion-Pruebas-Fisicas.git&quot;,
-    &quot;accountId&quot;: &quot;61e2ec5a-3c65-481b-bfb5-6948f127c0c6&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/diegobenito2/Aplicacion-Pruebas-Fisicas.git",
+    "accountId": "3fcc4854-54fd-4b4c-8923-5fab51a7252e"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -104,26 +109,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Diego/Downloads/Aplicacion-Pruebas-Fisicas&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;live.edit.configurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "PROJECT_TRUSTED_KEY": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/diego/Downloads/Aplicacion-Pruebas-Fisicas/app/src/main/res/mipmap-mdpi",
+    "settings.editor.selected.configurable": "live.edit.configurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\diego\Downloads\Aplicacion-Pruebas-Fisicas\app\src\main\res\mipmap-mdpi" />
       <recent name="C:\Users\diego\Downloads\Aplicacion-Pruebas-Fisicas\app\src\main\java\com\example\pruebas_fisicas\ui\info" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -294,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740584159048</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="que si la edad es mayor o menor a 16 y 12 que coja esa edad">
+      <option name="closed" value="true" />
+      <created>1740662452220</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1740662452220</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -307,6 +321,23 @@
     <MESSAGE value="Cambios para que el navegation con parametros explicado entre Aris y Daniel Gallego.&#10;Cambios para que coga los usuarios de la base de datos y para que funcione el cambiar la contraseña en tiempo real y se actualice en la base de datos." />
     <MESSAGE value="LoginScreen terminado" />
     <MESSAGE value="cambios" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambios" />
+    <MESSAGE value="que si la edad es mayor o menor a 16 y 12 que coja esa edad" />
+    <option name="LAST_COMMIT_MESSAGE" value="que si la edad es mayor o menor a 16 y 12 que coja esa edad" />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.example.pruebas_fisicas">
+          <value>
+            <CheckInfo lastCheckTimestamp="1740663004724" />
+          </value>
+        </entry>
+        <entry key="com.example.pruebas_fisicas.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1740663004723" />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

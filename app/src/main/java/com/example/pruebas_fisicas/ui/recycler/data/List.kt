@@ -4,12 +4,13 @@ package com.example.pruebas_fisicas.ui.recycler.data
 import com.example.pruebas_fisicas.R
 
 fun listPruebas(edad: Int): List<Prueba> {
-    when (edad) {
-        12, 13 -> {
+
+    when {
+        edad <= 12 -> {
             return listaComun()
         }
 
-        14 -> {
+        edad == 14 -> {
             return listaComun() + Prueba(
                 R.drawable.carrera,
                 "Carrera ida y vuelta 10x5m",
@@ -18,7 +19,7 @@ fun listPruebas(edad: Int): List<Prueba> {
             )
         }
 
-        15, 16 -> {
+        edad >= 15 -> {
             return listaComun() + Prueba(
                 R.drawable.carrera,
                 "Carrera ida y vuelta 10x5m",

@@ -40,7 +40,13 @@ fun NavegationWrapper(navController: NavHostController) {
         composable<Recycler> {
             val recyclerArgs: Recycler = it.toRoute()
             RecyclerScreen(
-                navigationToInfoS = { navController.navigate(InfoS(recyclerArgs.userid)){ popUpTo<InfoS> { inclusive = true } } },
+                navigationToInfoS = {
+                    navController.navigate(InfoS(recyclerArgs.userid)) {
+                        popUpTo<InfoS> {
+                            inclusive = true
+                        }
+                    }
+                },
                 navigationToCalculoNotas = { prueba ->
                     navController.navigate(CalculoNotas(prueba, recyclerArgs.userid))
                 },
@@ -52,9 +58,15 @@ fun NavegationWrapper(navController: NavHostController) {
         composable<CalculoNotas> {
             val notas: CalculoNotas = it.toRoute()
 
-            CalculadoraNotasScreen(notas.prueba, notas.userid){
-                navController.navigate(Recycler(notas.userid)){ popUpTo<Recycler> { inclusive = true } }
-            }
+            CalculadoraNotasScreen(notas.prueba, notas.userid, {
+                navController.navigate(Recycler(notas.userid)) {
+                    popUpTo<Recycler> {
+                        inclusive = true
+                    }
+                }
+            }, {
+                navController.navigate(InfoS(notas.userid)) { popUpTo<InfoS> { inclusive = true } }
+            })
 
         }
     }

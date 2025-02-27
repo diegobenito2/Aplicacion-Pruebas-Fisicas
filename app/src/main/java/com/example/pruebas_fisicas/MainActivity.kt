@@ -35,8 +35,8 @@ fun ThemeSwitcherApp() {
     val navController = rememberNavController()
     val bBdd = BBdd(LocalContext.current)
     val db= bBdd.writableDatabase
-    bBdd.onUpgrade(db, 1, 2) //Para borrar la base datos y volver a crearla
-    cargarDatos(db) // cargar los usuarios a la base de datos.
+//    bBdd.onUpgrade(db, 1, 2) //Para borrar la base datos y volver a crearla
+//    cargarDatos(db) // cargar los usuarios a la base de datos.
     Pruebas_FisicasTheme(darkTheme = isDarkTheme) {
         Scaffold(
             floatingActionButton = {
@@ -58,9 +58,8 @@ fun ThemeSwitcherApp() {
 }
 
 fun cargarDatos(db: SQLiteDatabase?) {
-    db?.execSQL("INSERT INTO user (email, password) VALUES ('diego@example.com', 'password123')")
-    db?.execSQL("INSERT INTO user (email, password) VALUES ('lucia@example.com', 'securepass')")
-    db?.execSQL("INSERT INTO user (email, password) VALUES ('ash.ketchum@pokedex.com', 'pikachu123')")
+    db?.execSQL("INSERT INTO user (email, password) VALUES ('diego@gmail.com', 'password123')")
+    db?.execSQL("INSERT INTO user (email, password) VALUES ('luis@gmail.com', 'luis123')")
 }
 
 

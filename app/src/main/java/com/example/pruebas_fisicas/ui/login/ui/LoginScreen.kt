@@ -83,7 +83,7 @@ fun Login(navigateToInfoS: (Int) -> Unit, navigateToForgotPass: (String) -> Unit
     val coroutineScope = rememberCoroutineScope()
 
     Column (Modifier.verticalScroll(rememberScrollState())){
-        HeaderText("Iniciar Sesión", Modifier.align(Alignment.CenterHorizontally))
+        HeaderText("Iniciar Sesión", Modifier.align(Alignment.CenterHorizontally).padding(top = 20.dp))
         Spacer(modifier = Modifier.padding(16.dp))
         EmailField(email) { email = it }
         Spacer(modifier = Modifier.padding(8.dp))
