@@ -58,13 +58,13 @@ fun RecyclerScreen(
     val context = LocalContext.current
     val helperDatos = remember { HelperdatosUsuario(context) }
     val user= helperDatos.getDatosUsuarioPorId(userId)
-    val pruebasList = listPruebas(user?.edad ?: 16)
+    val pruebasList = listPruebas(user?.edad ?: 16) //Coge la lista de edades con la edad del usuario y si la edad es nula usa 16 por defecto
     val pruebasListGrouped = pruebasList.groupBy { it.type } // Agrupamos por categorías
-    val categories = pruebasListGrouped.keys.toList()
+    val categories = pruebasListGrouped.keys.toList() // Obtenemos las categorías para las agrupaciones
 
     // Estado de búsqueda
     var searchQuery by remember { mutableStateOf("") }
-    var selectedCategory by remember { mutableStateOf<String?>(null) }
+    var selectedCategory by remember { mutableStateOf<String?>(null) } // Estado para almacenar la categoría seleccionada
 
     // Filtrar las pruebas según el nombre y la categoría seleccionada
     val filteredPruebas = pruebasList.filter {
@@ -143,7 +143,7 @@ fun RecyclerScreen(
     }
 
 }
-
+//Item de prueba en la lista
 @Composable
 fun itemPrueba(prueba: Prueba, onItemSelected: (Prueba) -> Unit) {
     Card(

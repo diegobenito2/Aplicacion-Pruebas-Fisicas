@@ -35,8 +35,8 @@ fun ThemeSwitcherApp() {
     val navController = rememberNavController()
     val bBdd = BBdd(LocalContext.current)
     val db= bBdd.writableDatabase
-//    bBdd.onUpgrade(db, 1, 2) //Para borrar la base datos y volver a crearla
-//    cargarDatos(db) // cargar los usuarios a la base de datos.
+//    bBdd.onUpgrade(db, 1, 2) //Para borrar las tablas y volver a crearlas
+    cargarDatos(db) // cargar los usuarios a la base de datos.
     Pruebas_FisicasTheme(darkTheme = isDarkTheme) {
         Scaffold(
             floatingActionButton = {
